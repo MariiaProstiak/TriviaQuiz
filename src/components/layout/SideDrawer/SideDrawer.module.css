@@ -1,0 +1,60 @@
+.sideDrawer {
+    position: fixed;
+    width: 70%;
+    max-width: 70%;
+    height: 100%;
+    top: 88px;
+    right: 0;
+    z-index: 200;
+    background-color: white;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .sideDrawer {
+        display: none;
+    }
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(100%);
+    display: none;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    height: 11%;
+    margin-bottom: 32px;
+}
+
+.logoImage {
+    display: inline-block;
+    background-image: url("../../../../public/home.png");
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+}
+
+.home {
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 65px;
+}

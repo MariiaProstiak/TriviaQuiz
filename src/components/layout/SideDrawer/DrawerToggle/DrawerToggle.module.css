@@ -1,0 +1,67 @@
+.DrawerToggle {
+    display: block;
+    z-index: 5;
+    position: relative;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0 20px 0 0;
+}
+
+.DrawerToggle::before,
+.DrawerToggle::after,
+.DrawerToggle span {
+    left: 0;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+    background-color: #fff;
+}
+
+.DrawerToggle::before,
+.DrawerToggle::after {
+    content: "";
+}
+
+/* Верхняя полоска бургера */
+.DrawerToggle::before {
+    top: 0;
+}
+
+/* Нижняя полоска бургера */
+.DrawerToggle::after {
+    bottom: 0;
+}
+
+/* Средняя полоска бургера */
+.DrawerToggle span {
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+}
+
+.DrawerToggle._active span {
+    transform: scale(0) translate(0px, -50%);
+}
+
+.DrawerToggle._active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translate(0px, 50%);
+}
+
+.DrawerToggle._active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0px, -50%);
+}
+
+.DrawerToggle div {
+    width: 90%;
+    height: 3px;
+    background-color: white;
+}
+
+@media (min-width: 767px) {
+    .DrawerToggle {
+        display: none;
+    }
+}

@@ -1,0 +1,35 @@
+[
+	{
+		"question": "7-Eleven stores were temporarily converted into Kwik E-marts to promote the release of what movie?",
+		"correct_answer":"The Simpsons Movie",
+		"incorrect_answers": [ "Batman: The Dark Knight","Alice in Wonderland","Starbuck"]
+	},
+	{
+		"question": "Famous for their work on modernist furniture design, Charles and Ray Eames were related how?",
+		"correct_answer":"Husband / Wife",
+		"incorrect_answers": ["Brothers / Sisters","Cousins","Step brothers / sisters"]
+	},
+	{
+
+		"question": "A 1985 North Atlantic expedition led by Robert Ballard discovered the wreck of what famous ship 73 years after it sank?",
+		"correct_answer":"Titanic",
+		"incorrect_answers": ["USS Arizona","Andrea Gail","American Queen"]
+	},
+	{
+
+		"question": "A 2006 study of phone conversations found that which statement was meant sarcastically 23 percent of the time?",
+		"correct_answer":"\"Yeah, right\"",
+		"incorrect_answers": ["\"That's great\""]
+	},
+	{
+		"question": "A 2011 box set celebrates the 13-film collaboration between composer Danny Elfman and what film director?",
+		"correct_answer":"Tim Burton",
+		"incorrect_answers": ["Steven Spielberg","George Lucas","Ridley Scott"]
+	},
+	{
+
+		"question": "A 20th-century fashion icon, Gabrielle Chanel was better known by what nickname?",
+		"correct_answer":"COCO",
+		"incorrect_answers": ["Chanel","Number Five"]
+	}
+]

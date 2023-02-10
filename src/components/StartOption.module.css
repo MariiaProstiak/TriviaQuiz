@@ -1,0 +1,42 @@
+.options {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   font-size: 24px;
+   width: 100%;
+}
+
+.options input {
+   width: 100%;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   cursor: pointer;
+   border-radius: 15px;
+   border: 2px solid #234668;
+   padding: 5px;
+   color: #fff;
+   font-size: 16px;
+   background-color: #252d4a;
+   transition: all 100ms linear;
+   margin: 5px 0;
+   outline: none;
+}
+
+.options input:checked {
+   background-image: linear-gradient(180deg, #95d891, #74bbad);
+   color: #fff;
+   box-shadow: 0 1px 1px #0000002e;
+   text-shadow: 0 1px 0px #79485f7a;
+}
+
+.options input:before {
+   content: attr(label);
+   display: inline-block;
+   text-align: center;
+   width: 100%;
+}
