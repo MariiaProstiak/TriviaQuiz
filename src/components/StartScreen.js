@@ -4,10 +4,13 @@ import { questions as basiqueQuestions } from "../store/basicQuestions";
 import Button from "./ui/Button";
 import classes from "./StartScreen.module.css";
 import StartOption from "./StartOption";
+import ErrorModal from "./ui/ErrorModal";
+import { decodeHTMLEntities as encoderFn } from "../assets/characterEncoder";
 
 const StartScreen = (props) => {
   const [file, setFile] = useState("");
   const [mode, setMode] = useState("");
+  const [error, setError] = useState(false);
   const hiddenFileInput = useRef(null);
   const inputApiNumber = useRef(null);
   const resCtx = useContext(ResultsContext);
@@ -17,14 +20,17 @@ const StartScreen = (props) => {
     const questions = data.map((question) => {
       const answersArr = question.incorrect_answers
         .map((answer) => {
+          let modifAnswer = encoderFn(answer);
           return {
-            answerText: answer,
+            answerText: modifAnswer,
             isCorrect: false,
           };
         })
-        .concat([{ answerText: question.correct_answer, isCorrect: true }]);
+        .concat([
+          { answerText: encoderFn(question.correct_answer), isCorrect: true },
+        ]);
       return {
-        questionText: question.question,
+        questionText: encoderFn(question.question),
         answerOptions: answersArr
           .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
@@ -52,6 +58,7 @@ const StartScreen = (props) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         const resp = transformData(data.results);
         resCtx.uploadUserQuestions(resp);
       });
@@ -86,6 +93,8 @@ const StartScreen = (props) => {
       startNewGameHandler();
     } else if (mode === "api" && numberInput) {
       startNewRandomGameHandler();
+    } else {
+      setError(true);
     }
   };
   const modeChangedHandler = (newMode) => {
@@ -93,6 +102,9 @@ const StartScreen = (props) => {
   };
   const numberChangedHandler = () => {
     numberInput = inputApiNumber.current.value;
+  };
+  const clearErrorHandler = () => {
+    setError(false);
   };
 
   return (
@@ -121,6 +133,12 @@ const StartScreen = (props) => {
       <Button type="success" onClick={startGameHandler}>
         {"Start the game"}
       </Button>
+      {error && (
+        <ErrorModal onClose={clearErrorHandler}>
+          You haven't chosen a way to upload a set of questions. Please select
+          one and start the quiz.
+        </ErrorModal>
+      )}
     </div>
   );
 };

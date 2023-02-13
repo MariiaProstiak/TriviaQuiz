@@ -3,6 +3,7 @@ import styles from "./Quiz.module.css";
 import ResultsContext from "../store/results-context.js";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import Button from "./ui/Button";
+import ErrorModal from "./ui/ErrorModal";
 
 const Quiz = (props) => {
   const resCtx = useContext(ResultsContext);
@@ -10,6 +11,7 @@ const Quiz = (props) => {
   const [currentResponse, setCurrentResponse] = useState(false);
   const [selected_answer, setSelected_answer] = useState();
   const [showAnswers, setShowAnswers] = useState(false);
+  const [error, setError] = useState(false);
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       resCtx.addToScore();
@@ -28,34 +30,39 @@ const Quiz = (props) => {
   };
   const onAnswerChangeHandler = (isCorrect, index) => {
     setCurrentResponse(isCorrect);
-    setSelected_answer(index);
+    setSelected_answer(index.toString());
   };
 
   const validateResponseHandler = () => {
-    setShowAnswers(true);
-    setTimeout(() => {
-      handleAnswerOptionClick(currentResponse);
-    }, 2000);
+    console.log(!!selected_answer);
+    if (!!selected_answer) {
+      setShowAnswers(true);
+      setTimeout(() => {
+        handleAnswerOptionClick(currentResponse);
+      }, 2000);
+    } else {
+      setError(true);
+    }
   };
   function styler(option, index) {
-    console.log(
-      option.answerText + ": " + currentResponse + " " + option.isCorrect
-    );
-    console.log(selected_answer + " " + index);
     if (showAnswers === true) {
       if (currentResponse ^ (currentResponse !== option.isCorrect)) {
         return { backgroundColor: "#94D7A2" }; //green
-      } else if (selected_answer === index) {
+      } else if (parseInt(selected_answer) === index) {
         return { backgroundColor: "#F8BCBC" }; //red
       } else {
         return { backgroundColor: "#252d4a" }; //blue basic
       }
     } else {
-      return selected_answer === index
+      return parseInt(selected_answer) === index
         ? { backgroundColor: "#234668" } //blue selected
         : { backgroundColor: "#252d4a" }; //blue basic
     }
   }
+
+  const clearErrorHandler = () => {
+    setError(false);
+  };
 
   if (props.loading) {
     return (
@@ -88,6 +95,11 @@ const Quiz = (props) => {
           {"Validate response"}
         </Button>
       </div>
+      {error && (
+        <ErrorModal onClose={clearErrorHandler}>
+          Please choose the answer you think is correct.
+        </ErrorModal>
+      )}
     </div>
   );
 };
