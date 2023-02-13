@@ -6,6 +6,7 @@ const InfoTipButton = (props) => {
       <a href="#info" title="Rules" className={classes.info__icon}>
         i
       </a>
+
       <div id="info" className={classes.info__body}>
         <a href="#" className={classes.info__close}>
           X

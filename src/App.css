@@ -24,10 +24,6 @@ body {
   box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
 }
 
-
-
-
-
 button {
   width: 100%;
   font-size: 16px;
@@ -60,4 +56,10 @@ button:hover {
 
 .refresh__btn {
   margin-top: 25px;
+}
+
+@media(max-width: 500px) {
+  .app {
+    width: 100%;
+  }
 }

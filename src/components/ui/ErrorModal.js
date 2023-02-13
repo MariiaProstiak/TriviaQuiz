@@ -1,10 +1,10 @@
 import "./ErrorModal.css";
-import Button from "./Button";
+import Backdrop from "./Backdrop";
 
 const ErrorModal = (props) => {
   return (
     <div>
-      <div className="backdrop" onClick={props.onClose} />
+      <Backdrop onClick={props.onClose} />
       <div className="error-modal">
         <h2>Attantion</h2>
         <p>{props.children}</p>

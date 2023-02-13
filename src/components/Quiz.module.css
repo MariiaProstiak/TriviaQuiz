@@ -26,3 +26,17 @@
    flex-direction: column;
    justify-content: space-between;
 }
+
+@media(max-width: 500px) {
+   .quizz {
+      flex-direction: column;
+   }
+
+   .question__section {
+      flex: 0 0 auto;
+   }
+
+   .question__text {
+      min-width: 320px;
+   }
+}

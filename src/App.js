@@ -7,6 +7,7 @@ import InfoTipButton from "./components/ui/InfoTipButton";
 import LoadingSpinner from "./components/ui/LoadingSpinner";
 import ResultsContext from "./store/results-context";
 import EmptyTemplate from "./assets/template";
+import Backdrop from "./components/ui/Backdrop";
 
 function App() {
   const [newGame, setNewGame] = useState(true);

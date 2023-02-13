@@ -2,7 +2,7 @@
    position: absolute;
    right: 20px;
    bottom: 20px;
-   z-index: 50;
+   z-index: 101;
 }
 
 .info__icon {
@@ -50,4 +50,11 @@
 
 .info__text p:last-child {
    margin: 0;
+}
+
+@media(max-height: 500px) and (orientation:landscape) {
+   .info__body {
+      width: 420px;
+      max-height: 280px;
+   }
 }
